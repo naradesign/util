@@ -6,6 +6,8 @@
     <title>jQuery Plugin</title>
     <style>
         *{ box-sizing: border-box; }
+        section{ margin: 3em 0; }
+        sup{ font-size: .5em; }
         em{ color: red; }
         input[type="text"],
         input:not([type]){
@@ -25,7 +27,7 @@
     <h1>jQuery Plugin</h1>
 
     <section>
-        <h2><a href="https://github.com/naradesign/util/blob/gh-pages/integer-with-commas.js">integer-with-commas.js</a> <sup>1,125 bytes</sup></h2>
+        <h2><a href="https://github.com/naradesign/util/blob/gh-pages/integer-with-commas.js">integer-with-commas.js</a> <sup><a href="https://github.com/naradesign/util/blob/gh-pages/integer-with-commas.min.js">337 bytes(minified)</a></sup></h2>
         <p>정수 3자리를 초과 입력할 때 콤마(,)를 추가해 준다. 정수만 입력 가능. 숫자 타입 인풋에는 콤마(,)를 입력할 수 없기 때문에 텍스트 형식 인풋에만 사용 가능.</p>
         <h3>$('<em>.selectors</em>').integerWithCommas('<em>keyup</em>');</h3>
         <input class="integer-with-commas-keyup" value="100" data-width="150">
@@ -38,7 +40,7 @@
     </section>
 
     <section>
-        <h2><a href="https://github.com/naradesign/hangul.josa.js/blob/gh-pages/hangul.josa.js">hangul.josa.js</a> <sup>969 bytes(minified)</sup></h2>
+        <h2><a href="https://github.com/naradesign/hangul.josa.js/blob/gh-pages/hangul.josa.js">hangul.josa.js</a> <sup><a href="https://github.com/naradesign/hangul.josa.js/blob/gh-pages/hangul.josa.min.js">969 bytes(minified)</a></sup></h2>
         <p>선택한 요소에 알맞는 조사(은/는, 이/가, 을/를, 와/과, 로/으로)를 붙여 준다. 인풋 뿐만 아니라 일반적인 텍스트 요소(strong, em 등)에 적용해도 사용 가능.</p>
         <h3>$('<em>.selectors</em>').josa('<em>이/가</em>');</h3>
         <input class="hangul-josa-iga" value="사과" data-width="150"> 하나 뿐입니다.
