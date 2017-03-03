@@ -8,7 +8,7 @@
         var addCommas = function ( originValue ) { // 유효한 정수로 만든 다음 콤마를 추가해서 반환.
             return originValue.replace(/\D+|^0+/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         };
-        $(this.selector).each(function ( index ) {
+        $(this.selector).each(function () {
             var $this = $(this);
             var inputUpdate = function () { // 인풋 업데이트.
                 $this.on('keyup', function () {
@@ -22,6 +22,7 @@
             };
             $this.is('input') ? inputUpdate() : textUpdate();
         });
+        return this;
     };
 
 }(jQuery));

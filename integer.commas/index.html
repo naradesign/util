@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1">
-    <title>jQuery Plugin</title>
+    <title>integer.commas.js</title>
     <style>
         *{ box-sizing: border-box; }
         section{ margin: 3em 0; }
@@ -21,16 +21,18 @@
     </style>
 </head>
 <body>
-    <h1><a href="https://github.com/naradesign/util/blob/gh-pages/integer.commas/integer.commas.js">integer.commas.js</a> <sup><a href="https://github.com/naradesign/util/blob/gh-pages/integer.commas/integer.commas.min.js">492 bytes(minified)</a></sup></h1>
+    <h1><a href="https://github.com/naradesign/util/blob/gh-pages/integer.commas/integer.commas.js">integer.commas.js</a> <sup><a href="https://github.com/naradesign/util/blob/gh-pages/integer.commas/integer.commas.min.js">491 bytes(minified)</a></sup></h1>
     <main>
-        <p>정수 3자리를 초과하는 인풋(input)을 타이핑 할 때 또는 텍스트(text) 값을 출력할 때 3자리마다 콤마(,)를 추가해 준다. 정수에만 사용 가능. 정수 아닌 값은 제거함. 숫자 타입 인풋에는 콤마(,)를 입력할 수 없기 때문에 텍스트 형식 인풋에만 사용 가능.</p>
-        <h3>$('<em>.selectors</em>').integerCommas();</h3>
-        <input class="integer-commas" value="100">
-        <input class="integer-commas" value="1000000">
-        <input class="integer-commas">
-        <p class="integer-commas">100</p>
-        <p class="integer-commas">1000000</p>
-        <p class="integer-commas"></p>
+        <p>정수 3자리를 초과하는 인풋(input)을 타이핑 할 때 또는 텍스트(text) 값을 출력할 때 3자리마다 콤마(,)를 추가해 준다. 정수에만 사용 가능. 정수 아닌 값은 제거. 숫자 타입 인풋에는 콤마(,)를 입력할 수 없기 때문에 텍스트 형식 인풋에만 사용 가능.</p>
+        <section>
+            <h2>$('<em>.selectors</em>').integerCommas();</h2>
+            <input class="integer-commas" value="100">
+            <input class="integer-commas" value="1000000">
+            <input class="integer-commas">
+            <p class="integer-commas">100</p>
+            <p class="integer-commas">1000000</p>
+            <p class="integer-commas"></p>
+        </section>
     </main>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="integer.commas.min.js"></script>
