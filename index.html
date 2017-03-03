@@ -4,70 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1">
     <title>jQuery Plugin</title>
-    <style>
-        *{ box-sizing: border-box; }
-        section{ margin: 3em 0; }
-        sup{ font-size: .5em; }
-        em{ color: red; }
-        input[type="text"],
-        input:not([type]){
-            border: 1px solid #ddd;
-            height: 48px;
-            padding: 0 15px;
-            border-radius: 3px;
-            font-size: inherit;
-            margin-right: 4px;
-        }
-        [data-width="50"]{ width: 50px; }
-        [data-width="100"]{ width: 100px; }
-        [data-width="150"]{ width: 150px; }
-    </style>
 </head>
 <body>
     <h1>jQuery Plugin</h1>
-
-    <section>
-        <h2><a href="https://github.com/naradesign/util/blob/gh-pages/integer-with-commas.js">integer-with-commas.js</a> <sup><a href="https://github.com/naradesign/util/blob/gh-pages/integer-with-commas.min.js">337 bytes(minified)</a></sup></h2>
-        <p>정수 3자리를 초과 입력할 때 콤마(,)를 추가해 준다. 정수만 입력 가능. 숫자 타입 인풋에는 콤마(,)를 입력할 수 없기 때문에 텍스트 형식 인풋에만 사용 가능.</p>
-        <h3>$('<em>.selectors</em>').integerWithCommas('<em>keyup</em>');</h3>
-        <input class="integer-with-commas-keyup" value="100" data-width="150">
-        <input class="integer-with-commas-keyup" value="1000" data-width="150">
-        <input class="integer-with-commas-keyup" data-width="150">
-        <h3>$('<em>.selectors</em>').integerWithCommas('<em>focusout</em>');</h3>
-        <input class="integer-with-commas-focusout" value="100" data-width="150">
-        <input class="integer-with-commas-focusout" value="1000" data-width="150">
-        <input class="integer-with-commas-focusout" data-width="150">
-    </section>
-
-    <section>
-        <h2><a href="https://github.com/naradesign/hangul.josa.js/blob/gh-pages/hangul.josa.js">hangul.josa.js</a> <sup><a href="https://github.com/naradesign/hangul.josa.js/blob/gh-pages/hangul.josa.min.js">969 bytes(minified)</a></sup></h2>
-        <p>선택한 요소에 알맞는 조사(은/는, 이/가, 을/를, 와/과, 로/으로)를 붙여 준다. 인풋 뿐만 아니라 일반적인 텍스트 요소(strong, em 등)에 적용해도 사용 가능.</p>
-        <h3>$('<em>.selectors</em>').josa('<em>이/가</em>');</h3>
-        <input class="hangul-josa-iga" value="사과" data-width="150"> 하나 뿐입니다.
-        <h3>$('<em>.selectors</em>').josa('<em>을/를</em>');</h3>
-        <input class="hangul-josa-eul" value="사과" data-width="150"> 가지고 싶습니다.
-        <h3>$('<em>.selectors</em>').josa('<em>은/는</em>');</h3>
-        <input class="hangul-josa-eun" value="사과" data-width="150"> 참 예쁘죠.
-        <h3>$('<em>.selectors</em>').josa('<em>와/과</em>');</h3>
-        <input class="hangul-josa-wha" value="사과" data-width="150"> 함께라면 어디라도 좋습니다.
-        <h3>$('<em>.selectors</em>').josa('<em>로/으로</em>');</h3>
-        <input class="hangul-josa-roh" value="사과" data-width="150"> 결정 하시겠습니까?
-    </section>
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="integer-with-commas.min.js"></script>
-    <script src="https://naradesign.github.io/hangul.josa.js/hangul.josa.min.js"></script>
-    <script>
-        // integer-with-commas.js
-        $('.integer-with-commas-keyup').integerWithCommas('keyup');
-        $('.integer-with-commas-focusout').integerWithCommas('focusout');
-
-        // hangul.josa.js
-        $('.hangul-josa-iga').josa('이/가');
-        $('.hangul-josa-eul').josa('을/를');
-        $('.hangul-josa-eun').josa('은/는');
-        $('.hangul-josa-wha').josa('와/과');
-        $('.hangul-josa-roh').josa('로/으로');
-    </script>
+    <ol>
+        <li><a href="https://github.com/naradesign/hangul.josa.js">한글 조사 출력기 - hangul.josa.js</a></li>
+        <li><a href="https://github.com/naradesign/util/blob/gh-pages/integer.commas.html">정수에 콤마 넣기 - integer.commas.js</a></li>
+    </ol>
 </body>
 </html>

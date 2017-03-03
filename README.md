@@ -1,2 +1,2 @@
 # util
-UI 개발 시 유용하게 참고할 수 있는 기능 모음.
+UI 개발에 필요한 jQuery plugin 모음.
