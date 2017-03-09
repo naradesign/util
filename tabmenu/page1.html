@@ -12,8 +12,9 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="tabmenu.js"></script>
     <script>
-    	$('main').load('nav.html');
-        $('.gnb').tabmenu();
+    	$('main').load('nav.html', function () {
+            $('.tab').tabmenu();
+        });
     </script>
 </body>
 </html>

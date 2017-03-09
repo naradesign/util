@@ -1,4 +1,4 @@
-/*! https://github.com/naradesign/integer.commas/ | Copyright (c) 2017 ChanMyeong Jeong | Under the MIT license. */
+/*! https://github.com/naradesign/util/tree/gh-pages/integer.commas | Copyright (c) 2017 ChanMyeong Jeong | Under the MIT license. */
 ;(function($){
     "use strict";
 
