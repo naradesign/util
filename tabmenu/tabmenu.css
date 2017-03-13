@@ -30,15 +30,12 @@
 	border-bottom: 1px solid #ccc;
 	margin-bottom: 44px;
 }
-.tab>ul>li>a,
-.tab>ul>li>strong{
+.tab>ul>li>a{
 	padding: 0 64px;
 	height: 44px;
 	line-height: 44px;
 }
-.tab>ul>.active>a,
-.tab>ul>li>strong{
-	font-weight: 700;
+.tab>ul>.active>a{
 	height: 45px;
 	line-height: 45px;
 	margin-bottom: -1px;
@@ -51,8 +48,7 @@
 	left: 0;
 }
 .tab .active>ul{ display: block; }
-.tab li li>a,
-.tab li li>strong{
+.tab li li>a{
 	line-height: 44px;
 	padding: 0 40px;
 }
