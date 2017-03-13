@@ -5,6 +5,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+.tab>h2{
+	font-size: 16px;
+	line-height: 1;
+}
 .tab a,
 .tab strong{
 	display: block;
@@ -34,6 +38,7 @@
 }
 .tab>ul>.active>a,
 .tab>ul>li>strong{
+	font-weight: 700;
 	height: 45px;
 	line-height: 45px;
 	margin-bottom: -1px;
@@ -43,6 +48,7 @@
 .tab ul ul{
 	position: absolute;
 	display: none;
+	left: 0;
 }
 .tab .active>ul{ display: block; }
 .tab li li>a,
