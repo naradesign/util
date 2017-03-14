@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>navigation.js</title>
+	<link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+	<div class="main">
+	</div>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="navigation.js"></script>
+	<script>
+		$('.main').load('content.html', function () {
+			$('.gnb').navigation('hor');
+			$('.lnb').navigation('ver');
+		});
+	</script>
+</body>
+</html>

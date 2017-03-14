@@ -1,0 +1,101 @@
+@charset "utf-8";
+.main *{ box-sizing: border-box; }
+.main em{
+	font-style:normal;
+	font-weight:700;
+	color:red;
+}
+
+/* GNB */
+.gnb{
+	font: 0/0 x;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.gnb>h2{
+	font-size: 16px;
+	line-height: 1;
+}
+.gnb a,
+.gnb strong{
+	display: block;
+	text-decoration: none;
+	color: #333;
+	font-size: 16px;
+}
+.gnb ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.gnb li{
+	display: inline-block;
+	vertical-align: top;
+}
+.gnb>ul{
+	position: relative;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 64px;
+}
+.gnb>ul>li>a{
+	padding: 0 64px;
+	height: 44px;
+	line-height: 44px;
+}
+.gnb>ul>.active>a{
+	height: 45px;
+	line-height: 45px;
+	margin-bottom: -1px;
+	border: 1px solid #ccc;
+	border-bottom-color: #fff;
+	border-radius: 3px 3px 0 0;
+}
+.gnb ul ul{
+	position: absolute;
+	display: none;
+	left: 0;
+}
+.gnb .active>ul{ display: block; }
+.gnb li li>a{
+	line-height: 64px;
+	padding: 0 40px;
+}
+
+/* LNB */
+.lnb{
+	max-width: 240px;
+	margin-bottom: 64px;
+}
+.lnb>h2{
+	font-size: 16px;
+	line-height: 1;
+}
+.lnb ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.lnb a{
+	display: block;
+	text-decoration: none;
+	color: #333;
+	line-height: 44px;
+	padding: 0 16px;
+	border-top: 1px dotted #ccc;
+}
+.lnb>ul{
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+.lnb>ul>li:first-child>a{ border-top: 0; }
+.lnb>ul>li>a:nth-last-child(2){ background: #f4f4f4; }
+.lnb>ul ul{ display: none; }
+.lnb .active>ul{ display: block; }
+.lnb._sub>ul>li>a{
+	background-position: 210px center;
+	background-repeat: no-repeat;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAARElEQVR4AWMYlGAU6OITwQSNDH8YIlBEooEiDTjVA6X+AxVEoij/D9JAUAu6csJaotCUE9aCUE6kFphyorUA4SAGowAA6Qwd+sFYS6oAAAAASUVORK5CYII=');
+}
+.lnb._sub>ul>.active>a{
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAARUlEQVR4AWMY1GAUNAAhScr/A2EDKcr/ACFcC2HlvxnCGMIhWohVDgQwLYSVh8K4hLU0AJWHQNkILXX47NDCIjIIwSgAAGEBHc5iOzTwAAAAAElFTkSuQmCC');
+}
