@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>label.for.js</title>
+    <style>
+        input[type="radio"],
+        input[type="checkbox"]{ vertical-align: middle; }
+        fieldset{ margin: 1.5em 0; }
+    </style>
+</head>
+<body>
+    <h1>
+        <a href="https://github.com/naradesign/util/blob/gh-pages/label.for/label.for.js">label.for.js</a>
+    </h1>
+    <main>
+        <p>radio, checkbox 요소에 인접한 label 요소가 id, for 속성으로 연결되어 있지 않으면 난수를 생성하여 id, for 값을 연결한다.</p>
+        <fieldset>
+            <legend>라디오</legend>
+            <input type="radio" name="radio"><label>옵션1</label>
+            <input type="radio" name="radio"><label>옵션2</label>
+        </fieldset>
+        <fieldset>
+            <legend>체크박스</legend>
+            <input type="checkbox"><label>옵션1</label>
+            <input type="checkbox"><label>옵션2</label>
+        </fieldset>
+    </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="label.for.js"></script>
+</body>
+</html>
