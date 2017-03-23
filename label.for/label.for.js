@@ -7,7 +7,7 @@ jQuery(function ($) {
                 originalValue = $input.attr('id'), // input 요소의 id 초기 값.
                 newValue = 'i' + Math.round(Math.random() * 10000); // 0~9999 사이의 난수 생성.
             // input 요소에 id 속성이 없거나 값이 없을 때 양쪽 모두 새 값을 세팅.
-            if( !$input.is('[id]') || !originalValue.length ){
+            if( !$input.is('[id]') || !originalValue ){
                 $input.attr('id', newValue);
                 $label.attr('for', newValue);
             // input 요소에 id 값이 있지만 for 값과 일치하지 않을 때 id 값을 for 값으로 세팅.
