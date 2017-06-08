@@ -5,6 +5,10 @@
     <meta name="viewport" content="initial-scale=1">
     <title>animation.toggle.js</title>
 <style>
+*{ box-sizing: border-box; }
+section{ margin: 3em 0; }
+sup{ font-size: .5em; }
+em{ color: red; }
 @keyframes fadeIn {
     from{opacity: 0;}
     to{opacity: 1;}
@@ -35,24 +39,25 @@
 </head>
 <body>
     <h1>
-        <a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.js">animation.toggle.js <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">animation.toggle.min.js</a></sup></a>
+        <a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.js">animation.toggle.js</a>
+        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">animation.toggle.min.js</a></sup>
     </h1>
     <main>
-        <p>CSS display 속성은 animation 불가능한 속성이다. 하지만 이 라이브러리를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
+        <p>CSS display 속성은 animation 또는 transition 불가능한 속성이다. 하지만 이 라이브러리를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
         <p>이 라이브러리를 사용함에 있어 한 가지 유의할 것은 CSS 애니메이션 실행 속도와 JavaScript 애니메이션 실행 속도에 미세한 차이가 있기 때문에 CSS 보다 JavaScript 실행 시간을 짧게 설정해야 한다. 예를 들어 CSS 실행 시간을 0.4초로 설정했다면 JavaScript 실행 시간은 0.36초로 설정하는 것이다.</p>
         <section>
-            <h2>애니메이션을 사용하지 않는 일반적인 display 패턴</h2>
+            <h2>애니메이션을 사용하지 않는 일반적인 토글</h2>
 <pre>$(document).on("click", ".fade-btn", function () {
-    $(this).parent().toggleClass("show");
+    $(this).parent().<strong>toggleClass</strong>("show");
 }
 $(document).on("click", ".fade-btn", function () {
-    $(this).next().toggle();
+    $(this).next().<strong>toggle</strong>();
 }</pre>
         </section>
         <section>
-            <h2>이 라이브러리가 제안하는 애니메이션 사용 패턴</h2>
+            <h2>이 라이브러리가 제안하는 애니메이션 토글</h2>
                         <h3>HTML</h3>
-<pre>&lt;div class="fade"&gt; // 애니메이션 타겟.
+<pre>&lt;div class="fade"&gt; // 애니메이션 컨테이너.
     &lt;button type="button" class="fade-btn"&gt;fade 버튼&lt;/button&gt; // 애니메이션 버튼.
     &lt;output class="fade-cnt" hidden&gt;fade 콘텐츠&lt;/output&gt; // 애니메이션 콘텐츠.
 &lt;/div&gt;</pre>
@@ -63,12 +68,12 @@ $(document).on("click", ".fade-btn", function () {
 .ani-hide .fade-cnt{ animation: fadeOut .4s; }</pre>
             <h3>JavaScript</h3>
 <pre>$(document).on("click", ".fade-btn", function () {
-    animationToggle( $(this).parent(), // 필수. ".fade" 이런 형식도 가능.
+    <strong>animationToggle</strong>( <em>$(this).parent()</em>, // 필수. ".fade" 이런 형식도 가능.
         {
-            //toggleClass: "show", // 선택. 기본값 "show".
-            //animateShowClass: "ani-show", // 선택. 기본값 "ani-show".
-            //animateHideClass: "ani-hide", // 선택. 기본값 "ani-hide".
-            //animateTime: 360 // 선택. 기본값 360
+            //<em>toggleClass: "show"</em>, // 선택. 기본값 "show".
+            //<em>animateShowClass: "ani-show"</em>, // 선택. 기본값 "ani-show".
+            //<em>animateHideClass: "ani-hide"</em>, // 선택. 기본값 "ani-hide".
+            //<em>animateTime: 360</em> // 선택. 기본값 360
         }
     );
 });</pre>
@@ -84,7 +89,7 @@ $(document).on("click", ".fade-btn", function () {
                 <output class="fade-cnt" hidden>Fade 콘텐츠 2</output>
             </div>
 <pre>$(document).on("click", ".fade-btn", function () {
-    animationToggle( $(this).parent() );
+    <strong>animationToggle</strong>( <em>$(this).parent()</em> );
 });</pre>
         </section>
         <section>
@@ -99,12 +104,12 @@ $(document).on("click", ".fade-btn", function () {
             </div>
             <div class="modal-fade-back" hidden></div>
 <pre>$(document).on("click", ".modal-fade-btn", function () {
-    animationToggle( $(this).parent() );
-    animationToggle( ".modal-fade-back" );
+    <strong>animationToggle</strong>( <em>$(this).parent()</em> );
+    <strong>animationToggle</strong>( <em>".modal-fade-back"</em> );
 });
 $(document).on("click", ".modal-fade-back", function () {
-    animationToggle( $(this) );
-    animationToggle( ".modal-fade" );
+    <strong>animationToggle</strong>( <em>$(this)</em> );
+    <strong>animationToggle</strong>( <em>".modal-fade"</em> );
 });</pre>
         </section>
         <p>이 밖에도 다양한 애니메이션 동작에 응용 가능하다.</p>
