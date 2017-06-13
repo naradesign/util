@@ -119,21 +119,21 @@ $(document).on("click", ".modal-fade-back", function () {
 <script>
     // Fade in/out 예제.
     $(document).on("click", ".fade-btn", function () {
-        $(this).parent().animation({
-            //action: "toggle",
-            //liveClass: "ani-live_",
-            //showClass: "ani-show_",
-            //hideClass: "ani-hide_",
-            //time: 360
-        });
+        $(this).parent().animation(/*{
+            action: "toggle",
+            liveClass: "ani-live",
+            showClass: "ani-show",
+            hideClass: "ani-hide",
+            time: 360
+        }*/);
     });
 
     // Modal fade in/out 예제.
-    $(document).on("click", ".modal-fade-btn", function () {
+    $(document).on("click touchend", ".modal-fade-btn", function () {
         $(this).parent().animation({action:"show"});
         $(".modal-fade-back").animation({action:"show"});
     });
-    $(document).on("click", ".modal-fade-back", function () {
+    $(document).on("click touchend", ".modal-fade-back", function () {
         $(".modal-fade, .modal-fade-back").animation({action:"hide"});
     });
 </script>
