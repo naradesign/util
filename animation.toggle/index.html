@@ -10,6 +10,10 @@ section{ margin: 3em 0; }
 sup{ font-size: .5em; }
 em{ color: red; }
 pre{ white-space: pre-wrap; }
+caption{ text-align: left; font-weight: 700; }
+table,th,td{ border:1px solid #ddd; border-collapse:collapse; }
+th,td{ padding:.5em; }
+th{ background:#f4f4f4; }
 /* Fade in/out animation */
 @keyframes fadeIn {
     from{opacity: 0;}
@@ -43,7 +47,7 @@ pre{ white-space: pre-wrap; }
         <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">575 bytes(minified)</a></sup>
     </h1>
     <main>
-        <p>CSS display 속성은 animation 또는 transition 불가능한 속성이다. 하지만 이 라이브러리를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
+        <p>CSS display 속성은 animation 또는 transition 불가능한 속성이다. 하지만 이 라이브러리(jQuery plugin)를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
         <p>이 라이브러리는 인라인 스타일로 CSS를 제어하지 않으며 오직 CSS 선택자만 조작하기 때문에 "보기, 감추기, 애니메이션" 스타일은 모두 CSS 선택자로 처리해야 한다.</p>
         <p>이 라이브러리를 사용함에 있어 한 가지 유의할 것은 CSS 애니메이션 실행 속도와 JavaScript 애니메이션 실행 속도에 미세한 차이가 있기 때문에 CSS 보다 JavaScript 실행 시간을 짧게 설정해야 한다는 것이다. 예를 들어 CSS 실행 시간을 0.4초로 설정했다면 JavaScript 실행 시간은 0.36초로 설정한다.</p>
         <section>
@@ -79,63 +83,58 @@ $(document).on("click", ".fade-btn", function () {
 });</pre>
         </section>
         <section>
-            <h2>Fade in/out 예제</h2>
-            <div class="fade">
-                <button type="button" class="fade-btn">Fade 버튼 1</button>
-                <output class="fade-cnt" hidden>Fade 콘텐츠 1</output>
-            </div>
-            <div class="fade">
-                <button type="button" class="fade-btn">Fade 버튼 2</button>
-                <output class="fade-cnt" hidden>Fade 콘텐츠 2</output>
-            </div>
-<pre>$(document).on("click", ".fade-btn", function () {
-    // $(this).parent().<strong>animation</strong>(<em>{action:"toggle"}</em>); // 아래와 동일한 표현.
-    $(this).parent().<strong>animation</strong>();
-});</pre>
+            <h2>animation() 플러그인 데모</h2>
+            <ol>
+                <li><a href="https://codepen.io/naradesign/pen/BZLyGJ">Fade in/out</a></li>
+                <li><a href="https://codepen.io/naradesign/pen/WOGbPK">Modal fade in/out</a></li>
+                <li><a href="https://codepen.io/naradesign/pen/rwMabX">Slide up/down</a></li>
+            </ol>
+            <p>이 밖에도 다양한 애니메이션 동작에 응용 가능하다.</p>
         </section>
-        <section>
-            <h2>Modal fade in/out 예제</h2>
-            <div class="modal-fade">
-                <button type="button" class="modal-fade-btn">Modal fade 버튼 1</button>
-                <output class="modal-fade-cnt" hidden>Modal fade 콘텐츠 1</output>
-            </div>
-            <div class="modal-fade">
-                <button type="button" class="modal-fade-btn">Modal fade 버튼 2</button>
-                <output class="modal-fade-cnt" hidden>Modal fade 콘텐츠 2</output>
-            </div>
-            <div class="modal-fade-back" hidden></div>
-<pre>$(document).on("click", ".modal-fade-btn", function () {
-    $(this).parent().<strong>animation</strong>(<em>{action:"show"}</em>);
-    $(".modal-fade-back").<strong>animation</strong>(<em>{action:"show"}</em>);
-});
-$(document).on("click touchend", ".modal-fade-back", function () {
-    $(".modal-fade, .modal-fade-back").<strong>animation</strong>(<em>{action:"hide"}</em>);
-});</pre>
-        </section>
-        <p>이 밖에도 다양한 애니메이션 동작에 응용 가능하다.</p>
+        <h2>API</h2>
+        <table>
+            <caption>animation() 플러그인에 객체 형식으로 넘길 수 있는 속성과 값.</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>action</td>
+                    <td>string</td>
+                    <td>"toggle"</td>
+                    <td>토글 "toggle" 또는 보기 "show" 또는 감추기 "hide".</td>
+                </tr>
+                <tr>
+                    <td>liveClass</td>
+                    <td>string</td>
+                    <td>"ani-live"</td>
+                    <td>애니메이션을 실행하는 동안 유지해야 할 클래스.</td>
+                </tr>
+                <tr>
+                    <td>showClass</td>
+                    <td>string</td>
+                    <td>"ani-show"</td>
+                    <td>애니메이션 요소를 표시하는 동안 유지할 클래스. time 속성에서 설정한 시간 동안만 유지.</td>
+                </tr>
+                <tr>
+                    <td>hideClass</td>
+                    <td>string</td>
+                    <td>"ani-hide"</td>
+                    <td>애니메이션 요소를 감추는 동안 유지할 클래스. time 속성에서 설정한 시간 동안만 유지.</td>
+                </tr>
+                <tr>
+                    <td>time</td>
+                    <td>number</td>
+                    <td>360</td>
+                    <td>애니메이션 요소를 표시하거나 감추는 시간. showClass, hideClass의 유지 시간.</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="animation.toggle.js"></script>
-<script>
-    // Fade in/out 예제.
-    $(document).on("click", ".fade-btn", function () {
-        $(this).parent().animation(/*{
-            action: "toggle",
-            liveClass: "ani-live",
-            showClass: "ani-show",
-            hideClass: "ani-hide",
-            time: 360
-        }*/);
-    });
-
-    // Modal fade in/out 예제.
-    $(document).on("click", ".modal-fade-btn", function () {
-        $(this).parent().animation({action:"show"});
-        $(".modal-fade-back").animation({action:"show"});
-    });
-    $(document).on("click touchend", ".modal-fade-back", function () {
-        $(".modal-fade, .modal-fade-back").animation({action:"hide"});
-    });
-</script>
 </body>
 </html>
