@@ -108,7 +108,7 @@ $(document).on("click", ".fade-btn", function () {
     $(this).parent().<strong>animation</strong>(<em>{action:"show"}</em>);
     $(".modal-fade-back").<strong>animation</strong>(<em>{action:"show"}</em>);
 });
-$(document).on("click", ".modal-fade-back", function () {
+$(document).on("click touchend", ".modal-fade-back", function () {
     $(".modal-fade, .modal-fade-back").<strong>animation</strong>(<em>{action:"hide"}</em>);
 });</pre>
         </section>
@@ -129,7 +129,7 @@ $(document).on("click", ".modal-fade-back", function () {
     });
 
     // Modal fade in/out 예제.
-    $(document).on("click touchend", ".modal-fade-btn", function () {
+    $(document).on("click", ".modal-fade-btn", function () {
         $(this).parent().animation({action:"show"});
         $(".modal-fade-back").animation({action:"show"});
     });
