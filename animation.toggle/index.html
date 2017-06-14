@@ -14,31 +14,6 @@ caption{ text-align: left; font-weight: 700; }
 table,th,td{ border:1px solid #ddd; border-collapse:collapse; }
 th,td{ padding:.5em; }
 th{ background:#f4f4f4; }
-/* Fade in/out animation */
-@keyframes fadeIn {
-    from{opacity: 0;}
-    to{opacity: 1;}
-}
-@keyframes fadeOut {
-    from{opacity: 1;}
-    to{opacity: 0;}
-}
-/* Fade in/out demo */
-.fade-cnt{ display: none; }
-.ani-live .fade-cnt{ display: inline-block; }
-.ani-show .fade-cnt{ animation: fadeIn .4s; }
-.ani-hide .fade-cnt{ animation: fadeOut .4s; }
-/* Modal fade in/out demo */
-.modal-fade-cnt,
-.modal-fade-back{ display: none; }
-.modal-fade-cnt{ position: fixed; z-index: 100; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; }
-.modal-fade-back{ background: rgba(0,0,0,.5); position: fixed; z-index: 99; top: 0; left: 0; right: 0; bottom: 0; }
-.ani-live .modal-fade-cnt,
-.ani-live.modal-fade-back{ display: block; }
-.ani-show .modal-fade-cnt,
-.ani-show.modal-fade-back{ animation: fadeIn .4s; }
-.ani-hide .modal-fade-cnt,
-.ani-hide.modal-fade-back{ animation: fadeOut .4s; }
 </style>
 </head>
 <body>
@@ -68,12 +43,12 @@ $(document).on("click", ".fade-btn", function () {
 &lt;/div&gt;</pre>
             <h3>CSS</h3>
 <pre>.fade-cnt{ display: none; }
-.ani-live .fade-cnt{ display: inline-block; }
-.ani-show .fade-cnt{ animation: fadeIn .4s; }
-.ani-hide .fade-cnt{ animation: fadeOut .4s; }</pre>
+.ani-live{ display: inline-block; }
+.ani-show{ animation: fadeIn .4s; }
+.ani-hide{ animation: fadeOut .4s; }</pre>
             <h3>JavaScript</h3>
 <pre>$(document).on("click", ".fade-btn", function () {
-    $(this).parent().<strong>animation</strong>({
+    $(this).next().<strong>animation</strong>({
         // <em>action: "toggle"</em>, // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
         // <em>liveClass: "ani-live"</em>, // 선택. 기본값 "ani-live".
         // <em>showClass: "ani-show"</em>, // 선택. 기본값 "ani-show".
