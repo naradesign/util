@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>random.display.js</title>
+</head>
+<body>
+    <h1>
+        <a href="https://github.com/naradesign/util/blob/gh-pages/random.display/random.display.js">random.display.js</a>
+        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/random.display/random.display.min.js">291 bytes(minified)</a></sup>
+    </h1>
+    <main>
+        <p>선택한 컨테이너의 자식 요소가 둘 이상이라면 그 중 하나만 임의로 화면에 표시한다.</p>
+        <section>
+            <h2>항목이 하나일 때 동작하지 않음</h2>
+            <ul class="random-container">
+                <li>하나만 있음</li>
+            </ul>
+        </section>
+        <section>
+            <h2>항목이 둘 이상일 때 그 중 하나만 임의로 표시</h2>
+            <ul class="random-container">
+                <li>하나</li>
+                <li>둘</li>
+            </ul>
+            <p>항목이 두 개 뿐이므로 50%의 확률로 '하나' 또는 '둘'을 표시한다.</p>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="random.display.js"></script>
+    <script>$('.random-container').randomDisplay();</script>
+</body>
+</html>
