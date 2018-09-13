@@ -14,17 +14,42 @@ caption{ text-align: left; font-weight: 700; }
 table,th,td{ border:1px solid #ddd; border-collapse:collapse; }
 th,td{ padding:.5em; }
 th{ background:#f4f4f4; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.fade__cnt{ display: none; }
+.fade__cnt--live{ display: inline-block; }
+.fade__cnt--show{ animation: fadeIn .4s; }
+.fade__cnt--hide{ animation: fadeOut .4s; }
+
+@keyframes scaleUp {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+@keyframes scaleDown {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+.scale__cnt{ display: none; }
+.scale__cnt--live{ display: inline-block; }
+.scale__cnt--show{ animation: scaleUp .4s; }
+.scale__cnt--hide{ animation: scaleDown .4s; }
 </style>
 </head>
 <body>
     <h1>
         <a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.js">animation.toggle.js</a>
-        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">575 bytes(minified)</a></sup>
+        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">602 bytes(minified)</a></sup>
     </h1>
     <main>
         <p>CSS display 속성은 animation 또는 transition 불가능한 속성이다. 하지만 이 라이브러리(jQuery plugin)를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
-        <p>이 라이브러리는 인라인 스타일로 CSS를 제어하지 않으며 오직 CSS 선택자만 조작하기 때문에 "보기, 감추기, 애니메이션" 스타일은 모두 CSS 선택자로 처리해야 한다.</p>
-        <p>이 라이브러리를 사용함에 있어 한 가지 유의할 것은 CSS 애니메이션 실행 속도와 JavaScript 애니메이션 실행 속도에 미세한 차이가 있기 때문에 CSS 보다 JavaScript 실행 시간을 짧게 설정해야 한다는 것이다. 예를 들어 CSS 실행 시간을 0.4초로 설정했다면 JavaScript 실행 시간은 0.36초로 설정한다.</p>
+        <p>이 라이브러리는 인라인 스타일로 CSS를 제어하지 않으며, 오직 CSS 선택자만 조작하기 때문에 "보기, 감추기, 애니메이션" 스타일은 모두 CSS 선택자로 처리해야 한다.</p>
         <section>
             <h2>애니메이션을 사용하지 않는 일반적인 토글 예제</h2>
 <pre>$(document).on("click", ".fade-btn", function () {
@@ -36,35 +61,66 @@ $(document).on("click", ".fade-btn", function () {
         </section>
         <section>
             <h2>이 라이브러리가 제안하는 애니메이션 토글 예제</h2>
-                        <h3>HTML</h3>
-<pre>&lt;div class="fade"&gt; // 애니메이션 컨테이너.
-    &lt;button type="button" class="fade-btn"&gt;fade 버튼&lt;/button&gt; // 애니메이션 버튼.
-    &lt;output class="fade-cnt" hidden&gt;fade 콘텐츠&lt;/output&gt; // 애니메이션 콘텐츠.
+            <h3>DEMO</h3>
+            <div class="fade">
+                <button type="button" class="fade__btn">fade 버튼</button>
+                <output class="fade__cnt">fade 콘텐츠</output>
+            </div>
+            <div class="scale">
+                <button type="button" class="scale__btn">scale 버튼</button>
+                <output class="scale__cnt">scale 콘텐츠</output>
+            </div>
+            <h3>HTML</h3>
+<pre>&lt;div class="fade"&gt;
+    &lt;button type="button" class="<em>fade__btn</em>"&gt;fade 버튼&lt;/button&gt; // 애니메이션 버튼.
+    &lt;output class="<em>fade__cnt</em>"&gt;fade 콘텐츠&lt;/output&gt; // 애니메이션 콘텐츠.
+&lt;/div&gt;</pre>
+<pre>&lt;div class="scale"&gt;
+    &lt;button type="button" class="<em>scale__btn</em>"&gt;scale 버튼&lt;/button&gt; // 애니메이션 버튼.
+    &lt;output class="<em>scale__cnt</em>"&gt;scale 콘텐츠&lt;/output&gt; // 애니메이션 콘텐츠.
 &lt;/div&gt;</pre>
             <h3>CSS</h3>
-<pre>.fade-cnt{ display: none; }
-.ani-live{ display: inline-block; }
-.ani-show{ animation: fadeIn .4s; }
-.ani-hide{ animation: fadeOut .4s; }</pre>
+<pre>@keyframes <em>fadeIn</em> {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes <em>fadeOut</em> {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.fade__cnt{ display: none; }
+.fade__cnt--live{ display: inline-block; }
+.fade__cnt--show{ animation: <em>fadeIn .4s</em>; }
+.fade__cnt--hide{ animation: <em>fadeOut .4s</em>; }
+
+@keyframes <em>scaleUp</em> {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+@keyframes <em>scaleDown</em> {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+.scale__cnt{ display: none; }
+.scale__cnt--live{ display: inline-block; }
+.scale__cnt--show{ animation: <em>scaleUp .4s</em>; }
+.scale__cnt--hide{ animation: <em>scaleDown .4s</em>; }</pre>
             <h3>JavaScript</h3>
-<pre>$(document).on("click", ".fade-btn", function () {
+<pre>$(document).on("click", ".fade__btn", function () {
     $(this).next().<strong>animation</strong>({
-        // <em>action: "toggle"</em>, // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
-        // <em>liveClass: "ani-live"</em>, // 선택. 기본값 "ani-live".
-        // <em>showClass: "ani-show"</em>, // 선택. 기본값 "ani-show".
-        // <em>hideClass: "ani-hide"</em>, // 선택. 기본값 "ani-hide".
-        // <em>time: 360</em> // 선택. 기본값 360.
+        <em>liveClass: "fade__cnt--live"</em>, // 필수. 클래스 이름 사용자 정의.
+        <em>showClass: "fade__cnt--show"</em>, // 필수. 클래스 이름 사용자 정의.
+        <em>hideClass: "fade__cnt--hide"</em> // 필수. 클래스 이름 사용자 정의.
+    });
+});
+
+$(document).on("click", ".scale__btn", function () {
+    $(this).next().<strong>animation</strong>({
+        <em>liveClass: "scale__cnt--live"</em>, // 필수. 클래스 이름 사용자 정의.
+        <em>showClass: "scale__cnt--show"</em>, // 필수. 클래스 이름 사용자 정의.
+        <em>hideClass: "scale__cnt--hide"</em> // 필수. 클래스 이름 사용자 정의.
     });
 });</pre>
-        </section>
-        <section>
-            <h2>animation() 플러그인 데모</h2>
-            <ol>
-                <li><a href="https://codepen.io/naradesign/pen/BZLyGJ">Fade in/out</a></li>
-                <li><a href="https://codepen.io/naradesign/pen/WOGbPK">Modal fade in/out</a></li>
-                <li><a href="https://codepen.io/naradesign/pen/rwMabX">Slide up/down</a></li>
-            </ol>
-            <p>이 밖에도 다양한 애니메이션 동작에 응용 가능하다.</p>
         </section>
         <h2>API</h2>
         <table>
@@ -79,37 +135,53 @@ $(document).on("click", ".fade-btn", function () {
             </thead>
             <tbody>
                 <tr>
-                    <td>action</td>
+                    <td>actionType</td>
                     <td>string</td>
-                    <td>"toggle"</td>
-                    <td>토글 "toggle" 또는 보기 "show" 또는 감추기 "hide".</td>
+                    <td>-</td>
+                    <td>보기 "show" 또는 감추기 "hide" 사용 가능. 보기/감추기 상태를 토글하려면 생략한다.</td>
                 </tr>
                 <tr>
                     <td>liveClass</td>
                     <td>string</td>
-                    <td>"ani-live"</td>
-                    <td>애니메이션을 실행하는 동안 유지해야 할 클래스.</td>
+                    <td>-</td>
+                    <td>애니메이션 실행하는 동안 유지하는 클래스. CSS <code>animation</code> 속성 값에 명시한 시간만큼 유지한다.</td>
                 </tr>
                 <tr>
                     <td>showClass</td>
                     <td>string</td>
-                    <td>"ani-show"</td>
-                    <td>애니메이션 요소를 표시하는 동안 유지할 클래스. time 속성에서 설정한 시간 동안만 유지.</td>
+                    <td>-</td>
+                    <td>애니메이션 요소 표시하는 동안 유지하는 클래스. CSS <code>animation</code> 속성 값에 명시한 시간만큼 유지한다.</td>
                 </tr>
                 <tr>
                     <td>hideClass</td>
                     <td>string</td>
-                    <td>"ani-hide"</td>
-                    <td>애니메이션 요소를 감추는 동안 유지할 클래스. time 속성에서 설정한 시간 동안만 유지.</td>
-                </tr>
-                <tr>
-                    <td>time</td>
-                    <td>number</td>
-                    <td>360</td>
-                    <td>애니메이션 요소를 표시하거나 감추는 시간. showClass, hideClass의 유지 시간.</td>
+                    <td>-</td>
+                    <td>애니메이션 요소 감추는 동안 유지하는 클래스. CSS <code>animation</code> 속성 값에 명시한 시간만큼 유지한다.</td>
                 </tr>
             </tbody>
         </table>
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="animation.toggle.js"></script>
+    <script>
+        jQuery(function($){
+            $(document).on("click", ".fade__btn", function () {
+                $(this).next().animation({
+                    actionType: "toggle", // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
+                    liveClass: "fade__cnt--live", // 필수.
+                    showClass: "fade__cnt--show", // 필수.
+                    hideClass: "fade__cnt--hide" // 필수.
+                });
+            });
+            $(document).on("click", ".scale__btn", function () {
+                $(this).next().animation({
+                    actionType: "toggle", // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
+                    liveClass: "scale__cnt--live", // 필수.
+                    showClass: "scale__cnt--show", // 필수.
+                    hideClass: "scale__cnt--hide" // 필수.
+                });
+            });
+        });
+    </script>
 </body>
 </html>

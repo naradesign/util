@@ -1,59 +1,61 @@
-/*! https://github.com/naradesign/util/tree/gh-pages/animation.toggle | Copyright (c) 2017 ChanMyeong Jeong | Under the MIT license. */
+/*! https://github.com/naradesign/util/tree/gh-pages/animation.toggle | Copyright (c) 2018 ChanMyeong Jeong | Under the MIT license. */
 ;(function($){
-    "use strict";
+    'use strict';
 
     // 애니메이션을 "toggle", "show", "hide" 하기 위한 함수.
-    $.fn.animation = function( obj ){
+    $.fn.animation = function( obj, callback ){
 
         if ( typeof obj !== "object" ) { // 객체가 아닌 경우 객체로 변환.
             obj = {};
         }
 
-        var toggleStr   = "toggle",
-            action      = obj.action     || toggleStr,
-            liveClass   = obj.liveClass  || "ani-live",
-            showClass   = obj.showClass  || "ani-show",
-            hideClass   = obj.hideClass  || "ani-hide";
-
-        // 애니메이션 종료.
-        var clear = function( $i, state ){
-            setTimeout(function () {
-                if ( state === 1 ) {
-                    $i.removeClass(showClass);
-                } else if ( state === 2 ) {
-                    $i.removeClass(liveClass + " " + hideClass);
-                }
-            }, obj.time || 360 );
-        };
+        const actionType  = obj.actionType;
+        const liveClass   = obj.liveClass;
+        const showClass   = obj.showClass;
+        const hideClass   = obj.hideClass;
 
         // 보여주기.
-        var show = function ($i) {
-            $i.addClass(liveClass + " " + showClass);
-            clear($i, 1);
+        const show = () => {
+            this.addClass(liveClass + ' ' + showClass);
         };
 
         // 감추기.
-        var hide = function ($i) {
-            $i.addClass(hideClass);
-            clear($i, 2);
+        const hide = () => {
+            this.addClass(liveClass + ' ' + hideClass);
         };
 
         // 토글.
-        var toggle = function ($i) {
-            // 타겟의 토글 클래스 상태에 따라 애니메이션 실행.
-            !$i.hasClass(liveClass) ? show($i) : hide($i);
+        const toggle = () => {
+            !this.hasClass(liveClass) ? show.call(this) : hide.call(this);
         };
 
-        // action 인자에 따라 필요한 기능 실행.
-        this.each(function () {
-            var $i = $(this);
-            if ( action === toggleStr ) {
-                toggle($i);
-            } else if ( action === "show" ) {
-                show($i);
-            } else if ( action === "hide" ) {
-                hide($i);
+        //
+        this.each(() => {
+            // actionType 인자에 따라 필요한 기능 실행.
+            if ( actionType === 'show' ) {
+                show.call(this);
+            } else if ( actionType === 'hide' ) {
+                hide.call(this);
+            } else {
+                toggle.call(this);
             }
+
+            // 애니메이션 종료 후 클래스 처리.
+            this.one('animationend webkitAnimationEnd', () => {
+                if (this.hasClass(showClass)) {
+                    this.removeClass(showClass);
+                } else {
+                    this.removeClass(liveClass);
+                    // IE 브라우저에서 간헐적으로 liveClass가 늦게 빠지면서 애니메이션 종료 후 번쩍 나타났다 사라지는 문제 해결.
+                    setTimeout(() => {
+                        this.removeClass(hideClass);
+                    }, 0);
+                }
+
+                if (typeof callback === 'function') {
+                    callback.call(this);
+                }
+            })
         });
 
         return this;
