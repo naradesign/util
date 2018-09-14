@@ -45,7 +45,7 @@ th{ background:#f4f4f4; }
 <body>
     <h1>
         <a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.js">animation.toggle.js</a>
-        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">602 bytes(minified)</a></sup>
+        <sup><a href="https://github.com/naradesign/util/blob/gh-pages/animation.toggle/animation.toggle.min.js">580 bytes(minified)</a></sup>
     </h1>
     <main>
         <p>CSS display 속성은 animation 또는 transition 불가능한 속성이다. 하지만 이 라이브러리(jQuery plugin)를 통해 display 상태가 변하는 요소에 애니메이션을 추가할 수 있다. 원리는 애니메이션 진행 전후로 display 속성을 처리하도록 하고 애니메이션 진행중에는 display 속성을 표시 상태가 되도록 유지한다.</p>
@@ -167,7 +167,7 @@ $(document).on("click", ".scale__btn", function () {
         jQuery(function($){
             $(document).on("click", ".fade__btn", function () {
                 $(this).next().animation({
-                    actionType: "toggle", // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
+                    // actionType: "show", // 선택. "show" 또는 "hide" 사용 가능. 생략하면 "toggle" 실행.
                     liveClass: "fade__cnt--live", // 필수.
                     showClass: "fade__cnt--show", // 필수.
                     hideClass: "fade__cnt--hide" // 필수.
@@ -175,7 +175,7 @@ $(document).on("click", ".scale__btn", function () {
             });
             $(document).on("click", ".scale__btn", function () {
                 $(this).next().animation({
-                    actionType: "toggle", // 선택. 기본값 "toggle". "show" 또는 "hide" 사용 가능.
+                    // actionType: "show", // 선택. "show" 또는 "hide" 사용 가능. 생략하면 "toggle" 실행.
                     liveClass: "scale__cnt--live", // 필수.
                     showClass: "scale__cnt--show", // 필수.
                     hideClass: "scale__cnt--hide" // 필수.

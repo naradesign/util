@@ -9,10 +9,11 @@
             obj = {};
         }
 
-        const actionType  = obj.actionType;
-        const liveClass   = obj.liveClass;
-        const showClass   = obj.showClass;
-        const hideClass   = obj.hideClass;
+        const actionType    = obj.actionType;
+        const liveClass     = obj.liveClass;
+        const showClass     = obj.showClass;
+        const hideClass     = obj.hideClass;
+        const isLive        = this.hasClass(liveClass);
 
         // 보여주기.
         const show = () => {
@@ -26,35 +27,23 @@
 
         // 토글.
         const toggle = () => {
-            !this.hasClass(liveClass) ? show.call(this) : hide.call(this);
+            isLive ? hide.call(this) : show.call(this);
         };
 
-        //
         this.each(() => {
             // actionType 인자에 따라 필요한 기능 실행.
-            if ( actionType === 'show' ) {
+            if ( actionType === 'show' && !isLive) {
                 show.call(this);
-            } else if ( actionType === 'hide' ) {
+            } else if ( actionType === 'hide' && isLive) {
                 hide.call(this);
-            } else {
+            } else if ( !actionType ) {
                 toggle.call(this);
             }
 
             // 애니메이션 종료 후 클래스 처리.
             this.one('animationend webkitAnimationEnd', () => {
-                if (this.hasClass(showClass)) {
-                    this.removeClass(showClass);
-                } else {
-                    this.removeClass(liveClass);
-                    // IE 브라우저에서 간헐적으로 liveClass가 늦게 빠지면서 애니메이션 종료 후 번쩍 나타났다 사라지는 문제 해결.
-                    setTimeout(() => {
-                        this.removeClass(hideClass);
-                    }, 0);
-                }
-
-                if (typeof callback === 'function') {
-                    callback.call(this);
-                }
+                this.hasClass(showClass) ? this.removeClass(showClass) : this.removeClass(liveClass + ' ' + hideClass);
+                typeof callback === 'function' && callback.call(this);
             })
         });
 
